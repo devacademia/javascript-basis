@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Structures conditionnelles en JavaScript</title>
+  </head>
+  <body>
+    <h1>
+      Les strucuture conditionnelles en JS : <em><code> if...else</code></em> et
+      <em><code>switch</code></em>
+    </h1>
+
+    <script>
+      let score = 7;
+
+      if (score >= 7) {
+        console.log("Succeeded");
+      } else {
+        console.log("Failed !");
+      }
+
+      let hobby = "Handball";
+      switch (hobby) {
+        case "Football":
+          console.log("Tres aimable");
+          break;
+        case "Basketball":
+          console.log("Tres agaçant");
+          break;
+        case "Volleyball":
+          console.log("Tres enthousiaste");
+          break;
+
+        default:
+          console.log("Sournois");
+          break;
+      }
+    </script>
+  </body>
+</html>
