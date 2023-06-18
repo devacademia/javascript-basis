@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les fonctions en JavaScript</title>
+  </head>
+  <body>
+    <h1>Les fonctions en JavaScript</h1>
+
+    <script>
+      let username = prompt("C'est quoi votre nom ?");
+
+      //while (username.length <= 0 || username === "") {
+      // username = prompt("J'ai besoin de ton nom");
+      //}
+
+      //alert("Bienvenue " + username);
+
+      function sayHello(name) {
+        alert("Hello " + name);
+      }
+
+      sayHello(username);
+    </script>
+  </body>
+</html>
