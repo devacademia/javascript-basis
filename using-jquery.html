@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Utiliser JQuery</title>
+  </head>
+  <body>
+    <h1>Utilisation de JQuery</h1>
+
+    <p class="pClass">Un paragraphe ciblé avec la classe CSS</p>
+
+    <p id="pColor">De quelle couleur veux-tu que je sois ?</p>
+    <button id="redBtn">Rouge</button>
+    <button id="blueBtn">Bleu</button>
+
+    <p id="pBlind">Cliques sur le button suivant pour voir un truc cool !</p>
+    <button id="blindBtn">Cliques ici</button>
+
+    <script src="jquery.js"></script>
+    <script>
+      $(".pClass")[0].style.color = "blue";
+
+      jQuery("#redBtn").on("click", function () {
+        $("#pColor")[0].style.color = "red";
+      });
+      jQuery("#blueBtn").on("click", function () {
+        $("#pColor")[0].style.color = "blue";
+      });
+
+      let paragraphe = document.createElement("p");
+      paragraphe.innerText = "Un paragraphe ajouté avec JQuery";
+      $("body").append(paragraphe);
+
+      $("#blindBtn").click(function () {
+        $("#pBlind").fadeOut(1000).fadeIn(1000);
+      });
+    </script>
+  </body>
+</html>
