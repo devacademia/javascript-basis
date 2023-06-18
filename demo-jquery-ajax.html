@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo AJAX JQuery</title>
+    <style>
+      body {
+        width: 90%;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Recuperer les donnees sur une API et les afficher</h1>
+
+    <button id="loadQuotes">Charger les citations</button>
+
+    <div id="quotes"></div>
+    <div id="loader" hidden>Loading...</div>
+    <div id="errors"></div>
+
+    <script src="jquery.js"></script>
+    <script>
+      const dataUrl = "https://dummyjson.com/quotes";
+
+      $("#loadQuotes").click(function () {
+        // Clear errors content
+        $("#errors").text("");
+        $("#errors").html("");
+
+        // Clear quotes content
+        $("#quotes").text("");
+        $("#quotes").html("");
+
+        $("#loader").show(300);
+        // Load and show quotes
+        $.ajax({
+          url: dataUrl,
+          dataType: "json",
+          success: function (data, textStatus, xhr) {
+            $("#loader").hide();
+            renderQuotes(data);
+          },
+          error: function (xhr, textStatus, error) {
+            showError(error);
+          },
+        });
+      });
+
+      /**
+       * Render quotes in the DOM
+       */
+      function renderQuotes(data) {
+        let quotes = randomItems(data.quotes, 10);
+        console.log(quotes);
+
+        quotes.forEach((quote) => {
+          $("#quotes").append(quoteHtml(quote));
+        });
+      }
+
+      function quoteHtml(quote) {
+        let div = document.createElement("div");
+        let hr = document.createElement("hr");
+        let authorEl = document.createElement("p");
+        let quoteEl = document.createElement("p");
+        div.style.padding = "10px";
+        div.style.margin = "auto";
+        div.style.marginTop = "15px";
+        div.style.marginBottom = "10px";
+        div.style.border = "solid 1px gray";
+        div.style.boxShadow = "3px 3px 2px grey";
+
+        authorEl.innerText = quote.author;
+        quoteEl.innerText = quote.quote;
+
+        div.appendChild(authorEl);
+        div.appendChild(hr);
+        div.appendChild(quoteEl);
+
+        return div;
+      }
+
+      function showError(error) {}
+
+      function randomItems(input, nbItems) {
+        const shuffledArray = input.sort(() => 0.5 - Math.random());
+        return shuffledArray.slice(0, nbItems);
+      }
+    </script>
+  </body>
+</html>
