@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les évènements du DOM</title>
+  </head>
+  <body>
+    <h1>Les évènements du DOM</h1>
+
+    <p id="pColor">De quelle couleur veux-tu que je sois ?</p>
+    <button id="redBtn">Rouge</button>
+    <button id="blueBtn">Bleu</button>
+
+    <p id="pHover">Survoles moi pour voir un truc</p>
+
+    <textarea name="text" id="text" cols="60" rows="10"></textarea>
+    <div style="margin-top: 20px">
+      Nombre de mots: <span id="textCount"></span>
+    </div>
+
+    <script type="text/javascript">
+      document.querySelector("#redBtn").addEventListener("click", function () {
+        changePColor("red");
+      });
+      document.querySelector("#blueBtn").addEventListener("click", function () {
+        changePColor("blue");
+      });
+
+      function changePColor(color) {
+        document.querySelector("#pColor").style.color = color;
+      }
+
+      document
+        .querySelector("#pHover")
+        .addEventListener("mouseenter", function () {
+          document.querySelector("#pHover").style.padding = "2px";
+          document.querySelector("#pHover").style.textShadow =
+            "3px 3px 2px gray";
+          document.querySelector("#pHover").style.fontSize = "18px";
+          document.querySelector("#pHover").style.transition = "all .2s";
+          //document.querySelector("#pHover").style.border = "dotted 2px";
+        });
+
+      document
+        .querySelector("#pHover")
+        .addEventListener("mouseout", function () {
+          document.querySelector("#pHover").style.padding = "initial";
+          document.querySelector("#pHover").style.textShadow = "none";
+          document.querySelector("#pHover").style.border = "none";
+          document.querySelector("#pHover").style.fontSize = "initial";
+        });
+
+      document.querySelector("#text").addEventListener("keyup", function () {
+        let count = document.querySelector("#text").value.length;
+        document.querySelector("#textCount").innerText = count;
+      });
+    </script>
+  </body>
+</html>
